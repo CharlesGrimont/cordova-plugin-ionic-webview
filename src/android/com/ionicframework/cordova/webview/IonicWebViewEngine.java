@@ -61,7 +61,7 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
    * Used when created via reflection.
    */
   public IonicWebViewEngine(Context context, CordovaPreferences preferences) {
-    super(new SystemWebView(context), preferences);
+    super(new ConvWebView(context), preferences);
     Log.d(TAG, "Ionic Web View Engine Starting Right Up 1...");
   }
 
