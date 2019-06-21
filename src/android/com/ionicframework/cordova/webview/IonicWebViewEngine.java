@@ -14,6 +14,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.text.InputType;
+import android.util.AttributeSet;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
 import org.apache.cordova.ConfigXmlParser;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPreferences;
@@ -46,7 +50,7 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
 
     @Override
     public InputConnection onCreateInputConnection(EditorInfo ei) {
-        InputConnection connection = super.onCreateInputConnection(outAttrs);
+        InputConnection connection = super.onCreateInputConnection(ei);
 
         // Many Samsung phones don't show decimal points on html number inputs by default.
         if((ei.inputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT){
@@ -82,6 +86,11 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     ConfigXmlParser parser = new ConfigXmlParser();
     parser.parse(cordova.getActivity());
 
+    String val = preferences.getString("removeSuggestions", "true");
+    Boolean removeSuggestions = true;
+    if(val.equals("false")){
+      removeSuggestions = false;
+    }
     String hostname = preferences.getString("Hostname", "localhost");
     String scheme = preferences.getString("Scheme", "http");
     CDV_LOCAL_SERVER = scheme + "://" + hostname;
