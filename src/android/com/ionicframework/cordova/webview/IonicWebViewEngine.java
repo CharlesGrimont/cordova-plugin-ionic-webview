@@ -33,6 +33,29 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
   private String CDV_LOCAL_SERVER;
   private static final String LAST_BINARY_VERSION_CODE = "lastBinaryVersionCode";
   private static final String LAST_BINARY_VERSION_NAME = "lastBinaryVersionName";
+  /**
+   * Convertigo: override to remove texts suggestions
+   */
+  public static class ConvWebView extends SystemWebView {
+    public ConvWebView(Context context) {
+        super(context);
+    }
+    public ConvWebView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    public InputConnection onCreateInputConnection(EditorInfo ei) {
+        InputConnection connection = super.onCreateInputConnection(outAttrs);
+
+        // Many Samsung phones don't show decimal points on html number inputs by default.
+        if((ei.inputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT){
+          ei.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD; //This is the only flag that works on Samsung devices to remove auto-suggestions
+      }
+
+        return connection;
+    }
+}
 
   /**
    * Used when created via reflection.
