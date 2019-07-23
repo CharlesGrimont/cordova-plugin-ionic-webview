@@ -33,7 +33,7 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
 
     /** Used when created via reflection. */
     public IonicWebViewEngine(Context context, CordovaPreferences preferences) {
-        this(new HackedWebView(context), preferences);
+        this(new IonicWebViewEngine(context), preferences);
     }
 
     public IonicWebViewEngine(SystemWebView webView) {    
@@ -44,5 +44,8 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     }
     public IonicWebViewEngine(SystemWebView webView, CordovaPreferences preferences) {
         super(webView, preferences);
+        webView.loadUrl("javascript:(function() { " +
+              "window.C8O_SPECIAL_WEBVIEW = true;" +
+              "})()");
     }
 }
