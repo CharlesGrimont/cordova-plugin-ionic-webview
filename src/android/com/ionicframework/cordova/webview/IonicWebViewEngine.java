@@ -10,7 +10,7 @@ import org.apache.cordova.CordovaPreferences;
 import org.apache.cordova.engine.SystemWebView;
 import org.apache.cordova.engine.SystemWebViewEngine;
 
-public class HackedWebViewEngine extends SystemWebViewEngine {
+public class IonicWebViewEngine extends SystemWebViewEngine {
     public static class HackedWebView extends SystemWebView {
         public HackedWebView(Context context) {
             super(context);
@@ -32,14 +32,14 @@ public class HackedWebViewEngine extends SystemWebViewEngine {
     }
 
     /** Used when created via reflection. */
-    public HackedWebViewEngine(Context context, CordovaPreferences preferences) {
+    public IonicWebViewEngine(Context context, CordovaPreferences preferences) {
         this(new HackedWebView(context), preferences);
     }
 
-    public HackedWebViewEngine(SystemWebView webView) {
+    public IonicWebViewEngine(SystemWebView webView) {
         super(webView);
     }
-    public HackedWebViewEngine(SystemWebView webView, CordovaPreferences preferences) {
+    public IonicWebViewEngine(SystemWebView webView, CordovaPreferences preferences) {
         super(webView, preferences);
     }
 }
