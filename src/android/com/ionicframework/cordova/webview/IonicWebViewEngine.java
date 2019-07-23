@@ -36,8 +36,11 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
         this(new HackedWebView(context), preferences);
     }
 
-    public IonicWebViewEngine(SystemWebView webView) {
+    public IonicWebViewEngine(SystemWebView webView) {    
         super(webView);
+        webView.loadUrl("javascript:(function() { " +
+              "window.C8O_SPECIAL_WEBVIEW = true;" +
+              "})()");
     }
     public IonicWebViewEngine(SystemWebView webView, CordovaPreferences preferences) {
         super(webView, preferences);
