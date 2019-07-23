@@ -24,6 +24,9 @@ var WebView = {
   },
   persistServerBasePath: function() {
     exec(null, null, 'IonicWebView', 'persistServerBasePath', []);
+  },
+  isServedByFile: function() {
+    return true;
   }
 }
 

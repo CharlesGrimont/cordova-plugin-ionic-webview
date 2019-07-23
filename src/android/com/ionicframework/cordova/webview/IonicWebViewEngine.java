@@ -38,14 +38,8 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
 
     public IonicWebViewEngine(SystemWebView webView) {    
         super(webView);
-        webView.loadUrl("javascript:(function() { " +
-              "window.C8O_SPECIAL_WEBVIEW = true;" +
-              "})()");
     }
     public IonicWebViewEngine(SystemWebView webView, CordovaPreferences preferences) {
         super(webView, preferences);
-        webView.loadUrl("javascript:(function() { " +
-              "window.C8O_SPECIAL_WEBVIEW = true;" +
-              "})()");
     }
 }
