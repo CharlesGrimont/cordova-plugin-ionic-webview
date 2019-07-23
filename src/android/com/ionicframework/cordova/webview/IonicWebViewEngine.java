@@ -49,8 +49,6 @@ import org.apache.cordova.engine.SystemWebView;
        under the License.
 */
 
-package org.apache.cordova.engine;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
