@@ -33,7 +33,7 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
 
     /** Used when created via reflection. */
     public IonicWebViewEngine(Context context, CordovaPreferences preferences) {
-        this(new IonicWebViewEngine(context), preferences);
+        this(new HackedWebView(context), preferences);
     }
 
     public IonicWebViewEngine(SystemWebView webView) {    
