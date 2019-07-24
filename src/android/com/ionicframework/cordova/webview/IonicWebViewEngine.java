@@ -23,9 +23,9 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
         public InputConnection onCreateInputConnection(EditorInfo outAttrs) {
             InputConnection connection = super.onCreateInputConnection(outAttrs);
 
-            // Many Samsung phones don't show decimal points on html number inputs by default.
-            if ((outAttrs.inputType & InputType.TYPE_CLASS_NUMBER) == InputType.TYPE_CLASS_NUMBER)
-                outAttrs.inputType |= InputType.TYPE_NUMBER_FLAG_DECIMAL;
+            if((outAttrs.inputType & EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT){
+                outAttrs.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD; //This is the only flag that works on Samsung devices to remove auto-suggestions
+            }
 
             return connection;
         }
